@@ -1,0 +1,6 @@
+arquitetura\eventsystem\domain\entity\Inscricao.class
+arquitetura\eventsystem\domain\entity\User.class
+arquitetura\eventsystem\EventsystemApplication.class
+arquitetura\eventsystem\api\controller\UserController.class
+arquitetura\eventsystem\domain\service\UserService.class
+arquitetura\eventsystem\domain\repository\UserRepository.class
