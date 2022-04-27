@@ -3,29 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitetura.eventsystem.domain.entity;
+package arquitetura.eventsystem.api.response;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+/**
+ *
+ * @author tiago
+ */
 
 @Getter
 @Setter
-@Entity
-@Table(name = "usuario")
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserResponse {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String sobrenome;
     private String email;
     private String cpf;
-
+    
+    
 }

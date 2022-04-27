@@ -5,7 +5,8 @@
  */
 package arquitetura.eventsystem.domain.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +19,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "inscricao")
-public class Inscricao {
+@Table(name = "evento")
+public class Event {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int evento_id;
-    private int usuario_id;
-    private LocalDate data_inscricao;
+    
+    @Column(name = "descricao")
+    private String descricao;
+    
+    @Column(name = "data_hora")
+    private LocalDateTime horario;
+    
+    @Column(name = "data_criacao")
+    private LocalDateTime dataCriacao;
     
     @ManyToOne
-    private User user;
+    private User usuario;
 }

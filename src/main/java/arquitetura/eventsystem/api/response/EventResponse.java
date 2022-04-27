@@ -3,31 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arquitetura.eventsystem.domain.entity;
+package arquitetura.eventsystem.api.response;
 
-import java.time.LocalDate;
-import javax.persistence.Entity;
+import java.time.LocalDateTime;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ *
+ * @author tiago
+ */
 @Getter
 @Setter
-@Entity
-@Table(name = "inscricao")
-public class Inscricao {
+@AllArgsConstructor
+@NoArgsConstructor
+public class EventResponse {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int evento_id;
-    private int usuario_id;
-    private LocalDate data_inscricao;
+    private String descricao;
+    private LocalDateTime horario;
+    private UserResponse usuario;
     
-    @ManyToOne
-    private User user;
 }

@@ -5,29 +5,40 @@
  */
 package arquitetura.eventsystem.domain.entity;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+/**
+ *
+ * @author tiago
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "inscricao")
-public class Inscricao {
+@Table(name = "login")
+public class Login {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int evento_id;
-    private int usuario_id;
-    private LocalDate data_inscricao;
     
-    @ManyToOne
-    private User user;
+    @NotBlank
+    private String nome;
+    
+    @NotBlank
+    private String usuario;
+    
+    @NotBlank
+    private String senha;
+        
 }
