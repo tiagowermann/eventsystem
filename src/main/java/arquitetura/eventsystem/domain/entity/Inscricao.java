@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arquitetura.eventsystem.domain.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,10 +21,22 @@ public class Inscricao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int evento_id;
-    private int usuario_id;
-    private LocalDate data_inscricao;
+    
+    
+    @Column(name = "id_usuario")
+    private int idUsuario;
+    
+    @Column(name = "id_evento")
+    private int idEvento;
+    
+    
+    @Column(name = "data_inscricao")
+    private LocalDateTime dataInscricao;
     
     @ManyToOne
-    private User user;
+    private User usuario;
+    
+    @ManyToOne
+    private Event evento;
+    
 }

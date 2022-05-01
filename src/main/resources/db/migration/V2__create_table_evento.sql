@@ -1,9 +1,9 @@
-CREATE TABLE evento(
+CREATE TABLE IF NOT EXISTS evento(
 	id serial PRIMARY KEY,
 	descricao varchar(255),
-	data_hora timestamp,
+	data_hora_inicio timestamp,
+	data_hora_termino timestamp,
 	data_criacao timestamp,
-	usuario_id integer,
-	CONSTRAINT fk_evento_usuario FOREIGN KEY(usuario_id) REFERENCES usuario(id)
+        local_evento varchar(255)
 );
 

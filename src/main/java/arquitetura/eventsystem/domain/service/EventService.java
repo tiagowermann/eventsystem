@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arquitetura.eventsystem.domain.service;
 
 import arquitetura.eventsystem.domain.entity.Event;
-import arquitetura.eventsystem.domain.entity.User;
 import arquitetura.eventsystem.domain.repository.EventRepository;
 import arquitetura.eventsystem.exception.BusinessException;
 import java.time.LocalDateTime;
@@ -22,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class EventService {
 
     private final EventRepository repository;
-    private final UserService userService;
+    //private final UserService userService;
 
     public List<Event> listarTodos() {
         return repository.findAll();
@@ -33,20 +27,35 @@ public class EventService {
     }
 
     public Event salvar(Event event) {
-        Optional<User> optUser = userService.buscarPorId(event.getUsuario().getId());
+        //Optional<User> optUser = userService.buscarPorId(event.getUsuario().getId());
 
-        if (optUser.isEmpty()) {
-            throw new BusinessException("Usuário não encontrado!");
-        }
+//        if (optUser.isEmpty()) {
+//            throw new BusinessException("Usuário não encontrado!");
+//        }
+        boolean existeMesmoHorario = false;
+        boolean existeMesmoLocal = false;
+        boolean localHorarioIguais = false;
 
-        Optional<Event> optHorario = repository.findByHorario(event.getHorario());
+        Optional<Event> optHorarioEvent = repository.findByDataHoraInicio(event.getDataHoraInicio());
+        // não aceita underline, somente nas variáveis
 
-        if (optHorario.isPresent()) {
-            throw new BusinessException("Já existe horário!");
-        }
+        Optional<Event> optLocalEvent = repository.findByLocalEvento(event.getLocalEvento());
 
-        event.setUsuario(optUser.get());
+        
+//        if (optLocalEvent.isPresent() && optHorarioEvent.isPresent()) {
+//            existeMesmoLocal = true;
+//            existeMesmoHorario = true;
+//        }
+//
+//        if (existeMesmoHorario == true && existeMesmoLocal == true) {
+//            existeMesmoHorario = false;
+//            existeMesmoLocal = false;
+//        throw new BusinessException("JÁ EXISTE EVENTO PARA MESMA DATA, HORÁRIO E LOCAL!");
+//        }
+
+        //event.setUsuario(optUser.get());
         event.setDataCriacao(LocalDateTime.now());
+//        event.setId(Long.MAX_VALUE + 1);
 
         return repository.save(event);
     }
@@ -55,12 +64,17 @@ public class EventService {
         Optional<Event> optEvent = this.buscarPorId(id);
 
         if (optEvent.isEmpty()) {
-            throw new BusinessException("Usuário não encontrado!");
+            throw new BusinessException("Evento não encontrado!");
         }
 
         event.setId(id);
 
         return salvar(event);
+    }
+    
+    
+    public void deletar(Long id) {
+        repository.deleteById(id);
     }
 
 }

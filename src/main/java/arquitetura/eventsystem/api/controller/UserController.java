@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arquitetura.eventsystem.api.controller;
 
 import arquitetura.eventsystem.api.mapper.UserMapper;
@@ -47,9 +42,9 @@ public class UserController {
     
     @GetMapping
     public ResponseEntity<List<UserResponse>> listarTodos() {
-        List<User> pacientes = service.listarTodos();
-        List<UserResponse> pacienteResponses = mapper.toUserResponseList(pacientes);
-        return ResponseEntity.status(HttpStatus.OK).body(pacienteResponses);
+        List<User> usuarios = service.listarTodos();
+        List<UserResponse> usuarioResponses = mapper.toUserResponseList(usuarios);
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioResponses);
     }
     
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package arquitetura.eventsystem.api.mapper;
 
 import arquitetura.eventsystem.api.request.UserRequest;
@@ -15,10 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author tiago
- */
 @Component
 @RequiredArgsConstructor
 public class UserMapper {
